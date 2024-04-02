@@ -14,8 +14,6 @@ app.use(cors());
 const genAI = new GoogleGenerativeAI("AIzaSyCtRcQFKGKgS31KIHTVlVIDGR3fSIgcS-k");
 
 
-let chat;
-
 app.post('/api/chat', async  (req, res) => {
     try {
         console.log(req.body.history);
@@ -25,12 +23,12 @@ app.post('/api/chat', async  (req, res) => {
        const chat = model.startChat({
         history: req.body.history
        });
-       const msg = req.body.message;
+       const msg = "Convert the following query into appropriate Git commands: " + req.body.message;
 
        const result = await chat.sendMessage(msg);
-       const response = await result.response
-       const text = response.text()
-       res.send(text)
+       const response =  result.response;
+       const text = response.text();
+       res.send(text);
 
     } catch (error) {
         console.error('Error:', error);

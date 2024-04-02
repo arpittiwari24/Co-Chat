@@ -18,8 +18,8 @@
         "title": "Hello World"
       },
       {
-        "command": "chat.run",
-        "title": "chatrun"
+        "command": "extension.executeGitCommand",
+        "title": "git command"
       },
       {
         "command": "chat.showWebviewPanel",

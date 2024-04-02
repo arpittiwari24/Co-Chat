@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -23,26 +22,32 @@ const App = () => {
       const response = await fetch('http://localhost:5000/api/chat',options);
       const data = await response.text();
       console.log(data);
-      setchatHistory(oldChatHistory => [...oldChatHistory, {
-        role: "user",
-        parts: value
-      },
-    {
-      role: "model",
-      parts: data
-    }
-    ])
-    setValue("")
+      setchatHistory(oldChatHistory => [...oldChatHistory, { role: "user", parts: [{ text: value }] }, { role: "model", parts: [{ text: data }] }]);
+    setValue("");
     } catch (error) {
       console.log(error);
       setError(error);
     }
   };
 const clear = () => {
-  setValue("")
-  setError("")
-  setchatHistory([])
+  setValue("");
+  setError("");
+  setchatHistory([]);
 };
+
+const handleInsertCommand =  (command) => {
+  const Message = new CustomEvent("openTerminal",{
+    data: {
+      command: 'openTerminal',
+      text: command, // Optional: Send the command text
+    },
+  });
+
+  // Dispatch the message to the parent window
+   window.dispatchEvent(Message);
+   console.log("ok here");
+};
+
   return (
     <div className="h-screen p-3">
         <form action="">
@@ -54,11 +59,22 @@ const clear = () => {
         </form>
         {error && <p>{error}</p>}
         <div>
-          {chatHistory.map((chatItem, _index) => 
-          <div key={_index}>
-            <p>{chatItem.role} : {chatItem.parts}</p>
-          </div>)}
-        </div>
+  {chatHistory.map((chatItem, index) => (
+    <div key={index}>
+      <p className='shadow-lg bg-gray-200 text-xl'>
+        {chatItem.role} : {chatItem.parts[0].text}
+        {chatItem.role === 'model' && (
+                <button
+                  onClick={() => handleInsertCommand(chatItem.parts[0].text)}
+                  className="ml-2 px-2 py-1 bg-green-500 text-white rounded-md"
+                >
+                  Insert Command
+                </button>
+              )}
+      </p>
+    </div>
+  ))}
+</div>
       </div>
   );
 };

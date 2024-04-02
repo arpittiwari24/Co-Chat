@@ -36,6 +36,14 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           vscode.window.showErrorMessage(data.value);
           break;
         }
+        case 'openTerminal': {
+          const commandText = data.data.text; // Access the command text
+          new vscode.ProcessExecution({
+            command: 'extension.openTerminal',
+            text: commandText,
+          });
+          break;
+        }
       }
     });
   }
@@ -59,8 +67,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     //   vscode.Uri.joinPath(this._extensionUri, "dist", "compiled/sidebar.css")
     // );
     
-    
-
     // Use a nonce to only allow a specific script to be run.
     const nonce = getNonce();
 
