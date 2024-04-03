@@ -1,12 +1,7 @@
 
 import * as vscode from 'vscode';
-import path from 'path';
 import { SidebarProvider } from './sidebar-provider';
 
-interface WebviewMessage {
-  command: string;
-  text?: string;
-}
 
 export function activate(context: vscode.ExtensionContext) {
 

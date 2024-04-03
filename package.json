@@ -90,6 +90,7 @@
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "reactflow": "^11.10.4",
     "rollup-plugin-terser": "^7.0.2"
   }
 }

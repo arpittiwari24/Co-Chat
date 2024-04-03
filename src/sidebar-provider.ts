@@ -36,12 +36,11 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           vscode.window.showErrorMessage(data.value);
           break;
         }
-        case 'openTerminal': {
-          const commandText = data.data.text; // Access the command text
-          new vscode.ProcessExecution({
-            command: 'extension.openTerminal',
-            text: commandText,
-          });
+        case "insertCommand": {
+          if (!data.text) {
+            return;
+          }
+          vscode.commands.executeCommand('extension.executeGitCommand', data.text);
           break;
         }
       }

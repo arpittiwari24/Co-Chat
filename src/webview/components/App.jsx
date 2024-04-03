@@ -36,16 +36,14 @@ const clear = () => {
 };
 
 const handleInsertCommand =  (command) => {
-  const Message = new CustomEvent("openTerminal",{
-    data: {
-      command: 'openTerminal',
-      text: command, // Optional: Send the command text
-    },
-  });
-
-  // Dispatch the message to the parent window
-   window.dispatchEvent(Message);
-   console.log("ok here");
+  if (tsvscode) {
+    tsvscode.postMessage({
+      type: 'insertCommand',
+      text: command,
+    });
+  } else {
+    console.log('VSCode API not available');
+  }
 };
 
   return (
