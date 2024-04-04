@@ -3,6 +3,9 @@
   "displayName": "vs-code-extension",
   "description": "random",
   "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/arpittiwari24/vs-code-extension"
+  },
   "engines": {
     "vscode": "^1.87.0"
   },
