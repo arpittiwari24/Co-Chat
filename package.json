@@ -2,7 +2,7 @@
   "name": "co-chat",
   "displayName": "Co-Chat",
   "description": "This is an IDE extension built for your day to day github command needs. Forgot a command , ask the co-chat extension to find it for you . ",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/arpittiwari24/vs-code-extension"
@@ -36,8 +36,8 @@
       "activitybar": [
         {
           "id": "webview",
-          "title": "Webview chat",
-          "icon": "./src/assets/icon.png"
+          "title": "Co-Chat",
+          "icon": "media/icon.svg"
         }
       ]
     },
@@ -46,8 +46,8 @@
         {
           "type": "webview",
           "id": "webview",
-          "icon": "./src/assets/icon.png",
-          "name": "webview aise hi"
+          "icon": "media/icon.svg",
+          "name": "Webview"
         }
       ]
     }
