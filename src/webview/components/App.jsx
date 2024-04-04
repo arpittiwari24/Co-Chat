@@ -19,7 +19,7 @@ const App = () => {
         }
       };
 
-      const response = await fetch('http://localhost:5000/api/chat',options);
+      const response = await fetch('https://api-co-chat.onrender.com/api/chat',options);
       const data = await response.text();
       console.log(data);
       setchatHistory(oldChatHistory => [...oldChatHistory, { role: "user", parts: [{ text: value }] }, { role: "model", parts: [{ text: data }] }]);
