@@ -2,7 +2,7 @@
   "name": "co-chat",
   "displayName": "Co-Chat",
   "description": "This is an IDE extension built for your day to day github command needs. Forgot a command , ask the co-chat extension to find it for you . ",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/arpittiwari24/vs-code-extension"
